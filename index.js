@@ -1,6 +1,7 @@
 const express = require('express')
 const bodyParser = require("body-parser");
 
+const cors = require("cors");
 const app = express()
 app.use(express.json());
 app.use(bodyParser.json());
@@ -44,6 +45,15 @@ app.post('/ussd', (req, res)=>{
     // send response back to API
     res.set('Content-Type: text/plain')
     res.send(response)
+})
+
+app.get('/connected', (req, res)=>{
+    console.log("Connected")
+})
+
+const PORT = 4000
+app.listen(PORT, () => {
+  console.log(`Server is listenning on port ${PORT}`)
 })
 
 module.exports = app;
